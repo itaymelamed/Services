@@ -1,0 +1,13 @@
+# directories
+bin/
+obj/
+out/
+
+# files
+Dockerfile*
+docker-compose.yml*
+**/*.trx
+**/*.md
+.DS_Store
+.git
+.vs

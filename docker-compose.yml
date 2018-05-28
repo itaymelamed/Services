@@ -1,7 +1,15 @@
 version: '3'
 services:
-  mongo:
-    image: mongo
-    ports:
-    - "27017:27017"
-    container_name: mongo
+    mongo:
+        image: mongo
+        ports:
+        - "27017:27017"
+        container_name: mongo
+
+    logger_service:
+        image: logger_service:latest
+        ports:
+        - "5000:5000"
+        container_name: logger_service
+        links:
+        - mongo

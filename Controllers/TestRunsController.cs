@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Services.DataFolder;
 using Services.Models;
+using System.Linq;
 
 namespace Services.Controllers
 {
@@ -12,15 +13,23 @@ namespace Services.Controllers
         [HttpGet]
         public IEnumerable<TestRun> Get()
         {
-            DataContext dataContext = new DataContext();
-            return dataContext.GetTestRuns();
+            TestRunsData dataContext = new TestRunsData();
+            return dataContext.GetDocuments();
+        }
+
+        // GET: api/TestRuns/Editor
+        [HttpGet("{category}")]
+        public IEnumerable<TestRun> Get(string category)
+        {
+            TestRunsData dataContext = new TestRunsData();
+            return dataContext.GetDocuments().Where(t => t.Category == category);
         }
 
         // GET api/TestRuns/5
         [HttpGet("{id}")]
-        public TestRun Get(string id)
+        public TestRun Get(int id)
         {
-            DataContext dataContext = new DataContext();
+            TestRunsData dataContext = new TestRunsData();
             return dataContext.GetTestRun(id);
         }
 
@@ -28,8 +37,8 @@ namespace Services.Controllers
         [HttpPost]
         public void Post([FromBody]TestRun testRun)
         {
-            DataContext dataContext = new DataContext();
-            dataContext.InsertTestRun(testRun);
+            TestRunsData dataContext = new TestRunsData();
+            dataContext.InsertDocument(testRun);
         }
     }
 }

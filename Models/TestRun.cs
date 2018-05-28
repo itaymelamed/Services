@@ -5,7 +5,7 @@ namespace Services.Models
     [BsonIgnoreExtraElements]
     public class TestRun
     {
-        public string TestRunId { get; set; }
+        public int TestRunId { get; set; }
         public string Env { get; set; }
         public string Date { get; set; }
         public Results Results { get; set; }
