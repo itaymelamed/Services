@@ -38,7 +38,7 @@ namespace Services.Controllers
         public void Post([FromBody]Test test)
         {
             TestsData testsData = new TestsData();
-            testsData.InsertDocument(test);
+            testsData.UpsertTest(test);
         }
     }
 }

@@ -6,9 +6,9 @@ namespace Services.DataFolder
 {
     public class DataContextBase<T>
     {
-        MongoClient _client;
-        IMongoDatabase _database;
-        protected IMongoCollection<T> _collection;
+        readonly MongoClient _client;
+        readonly IMongoDatabase _database;
+        protected readonly IMongoCollection<T> _collection;
 
         public DataContextBase(string collection)
         {
@@ -25,6 +25,11 @@ namespace Services.DataFolder
         public List<T> GetDocuments()
         {
             return _collection.AsQueryable().ToList();
+        }
+
+        public T GetDocumentByIndex(int i)
+        {
+            return _collection.AsQueryable().ToList()[i];
         }
     }
 }

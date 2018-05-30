@@ -22,4 +22,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
   </ItemGroup>
   
+  <ItemGroup>
+    <Compile Remove="Models\Url.cs" />
+  </ItemGroup>
 </Project>

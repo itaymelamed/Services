@@ -10,9 +10,17 @@ namespace Services.DataFolder
         {
         }
 
-        public Test GetTest(int id)
+        public Test GetTest(int testNumber)
         {
-            return _collection.Find(t => t.TestNumber == id).First();
+            return _collection.Find(t => t.TestNumber == testNumber).First();
+        }
+
+        public void UpsertTest(Test test)
+        {
+            UpdateOptions options = new UpdateOptions();
+            options.IsUpsert = true;
+            var filter = Builders<Test>.Filter.Where(t => t.TestNumber == test.TestNumber);
+            _collection.ReplaceOne(filter, test, options);
         }
     }
 }
